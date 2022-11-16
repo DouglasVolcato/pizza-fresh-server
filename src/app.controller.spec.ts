@@ -2,6 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+const makeSut = () => {
+  const appService = new AppService();
+  return new AppController(appService);
+}
+
 describe('AppController', () => {
   let appController: AppController;
 
@@ -14,9 +19,11 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getAppStatus()).toBe('Hello World!');
+  describe('AppController', () => {
+    it('getAppStatus should return a message', () => {
+      const sut = makeSut();
+      const message = sut.getAppStatus();
+      expect(message).toBe('Server is running! Please check http://localhost:3333/api for swagger docs');
     });
   });
 });
