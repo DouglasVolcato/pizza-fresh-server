@@ -7,7 +7,7 @@ export class TableService {
   tables: Table[] = [];
 
   findAll() {
-    return 'Find all tables.';
+    return this.tables;
   }
 
   create(createTableDto: CreateTableDto) {
