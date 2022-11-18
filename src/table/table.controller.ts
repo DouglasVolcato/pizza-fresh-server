@@ -1,9 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 @Controller('table')
 export class TableController {
   @Get()
   findAll() {
-    return 'find all tables.';
+    return 'Find all tables.';
+  }
+
+  @Post()
+  create() {
+    return 'Create a table';
   }
 }
