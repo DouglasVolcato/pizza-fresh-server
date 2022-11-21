@@ -28,10 +28,14 @@ export class TableService {
     });
   }
 
-  update(tableId: string, updateTableDto: TableDto) {
+  update(tableId: string, updateTableDto: TableDto): Promise<Table> {
     return this.prismaService.table.update({
       where: { id: tableId },
       data: updateTableDto,
     });
+  }
+
+  delete(tableId: string): Promise<Table> {
+    return this.prismaService.table.delete({ where: { id: tableId } });
   }
 }
