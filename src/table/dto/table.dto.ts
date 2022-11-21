@@ -1,7 +1,7 @@
 import { IsNumber, IsPositive } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateTableDto {
+export class TableDto {
   @IsNumber()
   @IsPositive()
   @ApiProperty({
